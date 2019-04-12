@@ -1,0 +1,14 @@
+form(method="POST")
+  {% csrf_token %}
+  label(for='id_username') Username:
+  input#id_username(type='text', name='account', maxlength='60', autofocus='', required='')
+  br
+  span.helptext Required. 60 characters or fewer. Letters, digits and @/./+/-/_ only.
+  br
+  label(for='id_password1') Password:
+  br
+  input#id_password1(type='password', name='password1', required='')
+  br
+  input#id_password1(type='password', name='password2', required='')
+  br
+  button(type="submit") 送出
