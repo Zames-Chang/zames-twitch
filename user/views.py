@@ -24,9 +24,14 @@ def register(request):
 """
 def register(request):
     if request.method == 'POST':
-        accout = Account(request.POST['account'],request.POST['password1'],request.POST['password2'])
-        x = accout.is_valid()
-        logging.error(x)
+        account = Account(request.POST['account'],request.POST['password1'],request.POST['password2'])
+        error_code = account.is_valid()
+        if(error_code == 0):
+            user = User(account = account.account, password = account.hash_password)
+            user.save()
+            logging.error(user.objects.values_list('password', flat=True))
+        else:
+            logging.error(account.errors[error_code])
         return render(request, 'registration/register.html')
     else:
         return render(request, 'registration/register.html')
