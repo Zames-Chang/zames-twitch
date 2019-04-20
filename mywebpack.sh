@@ -1,4 +1,5 @@
 #!/bin/sh
+# use js please
 # index.pug -> index.html
 index_path="template/index/pug/index.pug"
 index_path_ouput="static/index/index.html"
